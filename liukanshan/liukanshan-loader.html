@@ -1,0 +1,368 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>观念年轮 · 加载过场</title>
+<style>
+  /* 年份字体：Bodoni Moda，只子集化 0-9，base64 内嵌，保持零外部依赖 */
+  @font-face{
+    font-family:'Nianlun Digits';
+    font-weight:700;font-style:normal;font-display:block;
+    src:url(data:font/woff2;base64,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) format('woff2');
+    unicode-range:U+30-39;
+  }
+  :root{
+    --lk-bg:#0d1017;
+    --lk-ink:#8e9ab4;
+    --lk-ring:#39424f;
+    --lk-hot:#e8b04b;
+    --lk-text:#c8d0e0;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%}
+  body{
+    background:var(--lk-bg);
+    display:grid;place-items:center;
+    font-family:"PingFang SC","Microsoft YaHei",system-ui,-apple-system,sans-serif;
+    overflow:hidden;
+  }
+  .lk-wrap{
+    display:flex;flex-direction:column;align-items:center;gap:22px;
+    transition:opacity .5s ease, transform .5s ease;
+  }
+  .lk-wrap.lk-out{opacity:0;transform:scale(1.06)}
+
+  /* ---------- stage ----------
+     年份和插画是同一个 flex 列里的兄弟节点：上下错开，永不重叠，
+     所以"数字被遮挡"在结构上就不可能发生。
+
+     一个变量决定整块尺寸：宽度、字号、行距全部由 --s 推导，所以任何尺寸的
+     设备上比例完全一致。三个约束分别是"别超出宽度""别超过 360""别超出高度"
+     —— 最后一条是横屏手机（如 667x375）能正常显示的关键。 */
+  .lk-stage{
+    --s:min(72vw, 360px, calc(100vh - 96px));
+    position:relative;
+    width:var(--s);aspect-ratio:1;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    row-gap:calc(var(--s) * .044);   /* flex 不支持百分比 gap，会整条丢弃 */
+  }
+  .lk-rings{position:absolute;inset:0;width:100%;height:100%;overflow:visible;z-index:0}
+  .lk-glow{
+    position:absolute;left:50%;top:50%;
+    width:86%;aspect-ratio:1;transform:translate(-50%,-50%);
+    background:radial-gradient(circle, rgba(232,176,75,.14) 0%, rgba(232,176,75,.05) 44%, transparent 70%);
+    z-index:0;pointer-events:none;
+    animation:lk-breathe 3.2s ease-in-out infinite;
+  }
+  @keyframes lk-breathe{0%,100%{opacity:.7}50%{opacity:1}}
+
+  /* ---------- 年份 ----------
+     数字相对自己往下移 35.15% 舞台，让云朵落在它一半高度上。
+     用 position:relative + top（相对位移），不是负外边距 —— 负外边距会把
+     插画一起拉上来，"移动数字"和"移动主体"在视觉上不是一回事。
+     图层在后面（z-index 低于插画）：主体压在数字之上，数字从云的上下探出来。
+     At 0.28 the gold reads as bronze rather than mud, and it lifts to 0.46
+     once real progress arrives. */
+  .lk-year{
+    position:relative;z-index:1;
+    top:calc(var(--s) * .3515);
+    font-family:'Nianlun Digits', Georgia, 'Times New Roman', serif;
+    font-size:calc(var(--s) * .372);font-weight:700;
+    letter-spacing:.01em;line-height:1;
+    font-variant-numeric:tabular-nums lining-nums;
+    font-feature-settings:"tnum" 1,"lnum" 1;
+    color:#f0bd63;opacity:.34;
+    pointer-events:none;user-select:none;
+    transition:opacity .4s ease;
+  }
+  .lk-stage.lk-hasprogress .lk-year{opacity:.56}
+
+  /* ---------- 插画 ----------
+     在数字之上。viewBox 已经把重心定在底部横线上（见文件头），
+     所以流里水平居中就等于横线落在中轴上。 */
+  .lk-art{position:relative;z-index:2;width:96%;pointer-events:none}
+  .lk-art .lk-fox-svg{filter:drop-shadow(0 12px 28px rgba(0,0,0,.6))}
+
+  /* ---------- 年轮 ---------- */
+  .lk-ring{
+    fill:none;stroke:var(--lk-ring);stroke-width:1;
+    transform-origin:200px 200px;opacity:0;
+    animation:lk-ripple 2.8s cubic-bezier(.22,.61,.36,1) infinite;
+  }
+  .lk-ring:nth-child(1){animation-delay:0s}
+  .lk-ring:nth-child(2){animation-delay:.32s}
+  .lk-ring:nth-child(3){animation-delay:.64s}
+  .lk-ring:nth-child(4){animation-delay:.96s}
+  .lk-ring:nth-child(5){animation-delay:1.28s}
+  .lk-ring:nth-child(6){animation-delay:1.60s}
+  @keyframes lk-ripple{
+    0%{transform:scale(.34);opacity:0}
+    12%{opacity:.9}
+    70%{opacity:.22}
+    100%{transform:scale(1);opacity:0}
+  }
+
+  .lk-arc{
+    fill:none;stroke:var(--lk-hot);stroke-width:2;stroke-linecap:round;
+    transform:rotate(-90deg);transform-origin:200px 200px;
+    opacity:0;transition:opacity .3s ease;
+  }
+  .lk-stage.lk-hasprogress .lk-arc{opacity:1}
+
+  /* ---------- 刘看山：描边自绘 ---------- */
+  .lk-fox-svg{height:auto;display:block;overflow:hidden}
+  .lk-fox-svg path{
+    stroke-dasharray:var(--lk-len,1000);
+    stroke-dashoffset:var(--lk-len,1000);
+    fill-opacity:0;
+    animation:
+      lk-draw .5s cubic-bezier(.5,0,.2,1) forwards var(--lk-delay,0s),
+      lk-fill .34s ease forwards calc(var(--lk-delay,0s) + .46s);
+  }
+  @keyframes lk-draw{to{stroke-dashoffset:0}}
+  @keyframes lk-fill{to{fill-opacity:1}}
+
+  /* ellipses are not part of the line-draw sequence; they just fade in */
+  .lk-fox-svg ellipse{opacity:0;animation:lk-appear .4s ease forwards var(--lk-edelay,.9s)}
+  @keyframes lk-appear{to{opacity:1}}
+
+  /* --- the character is alive: it blinks --- */
+  .lk-fox-svg [data-e="0"]{
+    transform-box:fill-box;transform-origin:center;
+    animation:lk-appear .4s ease forwards var(--lk-edelay,.9s),
+              lk-blink 5.4s ease-in-out 1.6s infinite;
+  }
+  @keyframes lk-blink{
+    0%,90%,100%{transform:scaleY(1)}
+    94%,96%{transform:scaleY(.06)}
+  }
+
+  /* --- sun rays turn like a clock hand: time is the subject --- */
+  .lk-sun{transform-box:fill-box;transform-origin:center;animation:lk-clock 18s linear infinite}
+  @keyframes lk-clock{to{transform:rotate(360deg)}}
+
+  /* --- clouds drift --- */
+  .lk-cloud{animation:lk-drift 26s ease-in-out infinite}
+  @keyframes lk-drift{0%,100%{transform:translateX(0)}50%{transform:translateX(-9px)}}
+
+  /* --- tumbleweed rolls past: time moving through the desert --- */
+  .lk-tumble{
+    animation:lk-roll 11s linear infinite;
+    opacity:0;
+  }
+  @keyframes lk-roll{
+    0%{transform:translate(26px,6px);opacity:0}
+    12%{opacity:.95}
+    82%{opacity:.95}
+    100%{transform:translate(-34px,-2px);opacity:0}
+  }
+
+  /* ---------- 文案：流里的最后一行 ---------- */
+  .lk-text{text-align:center}
+  .lk-title{font-size:15px;letter-spacing:.34em;color:var(--lk-text);margin-bottom:9px;font-weight:500}
+  .lk-sub{font-size:13px;color:var(--lk-ink);letter-spacing:.05em;height:1.4em;transition:opacity .35s ease}
+  .lk-sub.lk-fade{opacity:0}
+
+  @media (prefers-reduced-motion:reduce){
+    .lk-ring,.lk-glow,.lk-sun,.lk-cloud,.lk-tumble,.lk-fox-svg [data-e="0"]{animation:none}
+    .lk-ring{opacity:.3}
+    .lk-tumble{opacity:0}
+    .lk-fox-svg path{stroke-dashoffset:0;fill-opacity:1;animation:none}
+    .lk-fox-svg ellipse{opacity:1;animation:none}
+  }
+</style>
+</head>
+<body>
+
+<div class="lk-wrap" id="lk-wrap">
+  <div class="lk-stage" id="lk-stage">
+    <svg class="lk-rings" viewBox="0 0 400 400" aria-hidden="true">
+      <circle class="lk-ring" cx="200" cy="200" r="192"/>
+      <circle class="lk-ring" cx="200" cy="200" r="160"/>
+      <circle class="lk-ring" cx="200" cy="200" r="128"/>
+      <circle class="lk-ring" cx="200" cy="200" r="96"/>
+      <circle class="lk-ring" cx="200" cy="200" r="66"/>
+      <circle class="lk-ring" cx="200" cy="200" r="40"/>
+      <circle class="lk-arc" id="lk-arc" cx="200" cy="200" r="184"/>
+    </svg>
+    <div class="lk-glow"></div>
+
+    <div class="lk-year" id="lk-year">2026</div>
+    <div class="lk-art"><svg class="lk-fox-svg" preserveAspectRatio="xMidYMid meet" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"   viewBox="0 0 296 172">
+  <g fill="none" fill-rule="evenodd" transform="translate(1 1)">
+    <g transform="rotate(-16 289.346 -186.082)">
+      <path data-p="0" fill="#FFF" stroke="#82899C" stroke-width="1.679" d="M64.2337032,50.9554391 C69.326726,50.7301153 71.8363314,53.0862987 71.7625195,58.0239891 C71.6887076,62.9616795 69.1791021,65.1038746 64.2337032,64.4505745" transform="rotate(4 67.999 57.753)"/>
+      <path data-p="1" fill="#FFF" stroke="#82899C" stroke-linejoin="round" stroke-width="1.679" d="M40.4237478,14.2180416 L39.1494024,5.45817385 C39.0960088,5.09114582 38.7551898,4.83689484 38.3881618,4.8902884 C38.3208218,4.90008471 38.255362,4.92005907 38.1940247,4.94952722 L28.8945485,9.41725331 C27.5111094,10.0818962 25.8903242,10.0293297 24.5528595,9.27644053 C15.5172392,4.19008529 9.83561966,2.11366589 7.50800104,3.04718233 C3.75154889,4.5537478 2.33572314,10.7572204 4.63065998,15.1880371 C6.16061787,18.1419149 10.3622221,21.5445803 17.2354726,25.3960331 C16.3976472,37.4587981 15.5178022,46.1655322 14.5959374,51.5162354 C13.2131403,59.5422901 12.9424578,65.9460163 22.2564454,68.9810928 C31.5704331,72.0161693 51.7850338,74.4828548 58.4975452,68.9810928 C65.2100565,63.4793308 62.6547443,55.3122756 62.332165,51.5162354 C62.1204691,49.0250454 63.5775047,36.5199594 66.7032718,14.0009773 L66.7032616,14.0009759 C66.7542538,13.6336123 66.4977842,13.2944679 66.1304205,13.2434756 C66.0266946,13.2290779 65.921039,13.2391375 65.8218939,13.272851 L52.8226822,17.6931274 L40.4237478,14.2180416 Z" transform="rotate(-5 35.187 37.538)"/>
+      <path data-p="2" fill="#82899C" d="M15.315248,8.44617256 L8.31833154,23.4586328 C3.71393034,20.4664421 1.41172974,16.8935208 1.41172974,12.739869 C1.41172974,6.5093914 5.14666686,5.85407342 7.14956933,5.67077033 C8.48483765,5.54856828 11.2067305,6.47370235 15.315248,8.44617256 Z"/>
+      <ellipse data-e="0" cx="41.211" cy="21.612" fill="#82899C" rx="2.57" ry="2.561"/>
+      <path data-p="3" stroke="#82899C" stroke-linecap="round" stroke-width="2" d="M14.9620353,36.9897959 C9.4504735,40.7470215 6.58897875,45.5377157 6.37755102,51.3618786"/>
+      <g stroke="#82899C" stroke-linecap="round" stroke-width="2" transform="rotate(-10 228.022 -303.247)">
+        <polyline points="11.979 17.741 12.821 13.375 16.938 13.816" transform="rotate(11 14.459 15.558)"/>
+        <path data-p="4" d="M1.2755102,1.906236 C9.50467955,7.60988599 14.5745654,12.4654138 16.4851678,16.4728195" transform="rotate(8 8.88 9.19)"/>
+      </g>
+      <polyline stroke="#82899C" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" points="47.194 72.704 49.723 88.757 53.062 88.757"/>
+      <polyline stroke="#82899C" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" points="38.457 72.704 38.457 88.802 34.439 88.802"/>
+      <polyline stroke="#82899C" stroke-linecap="round" stroke-width="2" points="3.827 49.001 7.852 47.194 9.881 50.159"/>
+    </g>
+    <g stroke="#525C76" transform="translate(183.673 .075)">
+      <ellipse data-e="1" cx="27.182" cy="25.656" stroke-width="1.6" rx="16.23" ry="16.056"/>
+      <path data-p="5" stroke-linecap="round" stroke-width="1.241" d="M43.3673469 10.9754786L46.2032063 8.92857143M40.0898459 38.4901284L42.9686878 41.6553077M11.7576466 39.5408163L7.65306122 42.0095194M11.4210646 9.16590002L8.92857143 6.37755102M27.5774103 0L27.5774103 3.95305288M49.744898 26.2934121L53.9883119 26.2934121M28.1777543 43.0213788L28.1777543 46.6435443M4.7750141 26.2934121L-1.13686838e-13 26.2934121"/>
+    </g>
+    <g stroke="#82899C" transform="translate(90.561 37.07)">
+      <path data-p="6" stroke-width="1.3" d="M12.800049,15.5659111 C4.55584222,7.92244512 15.4704843,9.30925816 15.7874228,11.8365084 C16.5864599,18.2079886 -1.59407342,16.7009717 9.76141682,5.31029143 C11.2105717,3.85664573 14.0431581,3.83128988 15.7442578,4.938587 C26.9690273,12.245128 6.70283903,24.0366564 7.0420254,11.1976712 C7.21852245,4.51685113 17.3386508,4.31154035 19.309862,9.72986651 C22.3321026,18.0371882 8.46437643,21.7781905 6.50695995,13.8566412 C3.56093578,1.93425462 20.4151278,5.35464339 19.3961919,11.309848 C15.4161504,34.5713309 -19.1683526,-9.34142036 19.1713745,1.86608396 C35.5190776,6.6448596 15.825887,27.162918 9.45116879,20.2887438 C4.13870945,14.5600559 3.23913308,-3.23699362 15.6237557,4.44710059 C25.0769127,10.3123539 18.548187,21.0571539 11.7389108,16.2047484 L12.800049,15.5659111 Z"/>
+      <path data-p="7" stroke-width="1.4" d="M3.04112737,6.07355704 C-9.07798684,18.5193114 19.0238045,24.6852556 17.7340616,14.4883066 C15.6495877,-1.9919345 -2.9168376,15.9500533 5.89630192,22.0265771 C12.2248714,26.3900281 22.9816978,14.4883066 17.7340616,6.07355704 C15.1973589,2.60036767 11.251439,1.69557836 5.89630192,3.35918911 C5.67778781,3.42707204 4.72606296,4.33186135 3.04112737,6.07355704 Z"/>
+    </g>
+    <path data-p="8" fill="#FFF" stroke="#525C76" stroke-width="2.4" d="M195.228571,119.956889 L195.228571,72.0283175 C195.228571,66.0636422 190.393247,61.2283175 184.428571,61.2283175 L181.642857,61.2283175 C175.678182,61.2283175 170.842857,66.0636422 170.842857,72.0283175 L170.842857,103.320154 L146.704082,103.320154 C141.015549,103.320154 136.404082,107.931621 136.404082,113.620154 L136.404082,119.956889 C136.404082,125.645422 141.015549,130.256889 146.704082,130.256889 L184.928571,130.256889 C190.617104,130.256889 195.228571,125.645422 195.228571,119.956889 Z"/>
+    <path data-p="9" fill="#FFF" stroke="#525C76" stroke-width="2.4" d="M142.932653,146.742603 L142.932653,111.569134 C142.932653,105.604459 138.097328,100.769134 132.132653,100.769134 L128.071429,100.769134 C122.106753,100.769134 117.271429,105.604459 117.271429,111.569134 L117.271429,130.105869 L91.8571429,130.105869 C86.1686099,130.105869 81.5571429,134.717336 81.5571429,140.405869 L81.5571429,146.742603 C81.5571429,152.431136 86.1686099,157.042603 91.8571429,157.042603 L132.632653,157.042603 C138.321186,157.042603 142.932653,152.431136 142.932653,146.742603 Z" transform="matrix(-1 0 0 1 224.49 0)"/>
+    <path data-p="10" stroke="#525C76" stroke-linecap="round" stroke-width="2" d="M85.4591837,169.722195 L210.459184,169.722195"/>
+    <path data-p="11" fill="#FFF" stroke="#525C76" stroke-width="2.4" d="M117.271429,169.797705 L162.065306,169.797705 L162.065306,69.5997461 C162.065306,60.0452199 154.319832,52.2997461 144.765306,52.2997461 L134.571429,52.2997461 C125.016902,52.2997461 117.271429,60.0452199 117.271429,69.5997461 L117.271429,169.797705 Z"/>
+    <path data-p="12" stroke="#525C76" stroke-linecap="round" stroke-width="2" d="M135.204082 95.7426033L135.204082 119.332513M149.234694 140.38546L149.234694 160.148839M184.94898 74.0589298L184.94898 88.089542M178.571429 93.1915829L178.571429 107.222195M89.2857143 109.773216L89.2857143 123.803828M187.5 97.0181135L187.5 122.528318M98.2142857 122.528318L98.2142857 148.038522M127.55102 125.079338L127.55102 152.495778M147.959184 67.6240743L147.959184 124.434554"/>
+    <path data-p="13" fill="#FFF" stroke="#525C76" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M200.255102 48.5487257C202.872492 35.9661772 206.995705 30.031545 212.62474 30.7448292 221.068292 31.8147555 223.776354 37.4777084 226.049192 40.2865168 228.32203 43.0953253 227.519082 31.4863224 236.05935 33.5536377 241.752863 34.9318479 246.298539 39.9302105 249.696378 48.5487257L200.255102 48.5487257zM1.13686838e-13 43.7132567C2.67727204 30.1851529 7.30742539 23.2974109 13.89046 23.0500307 20.0219959 22.8196171 25.1804054 26.0489035 29.3656887 32.7378899L29.3656699 32.7379016C29.6586216 33.2061016 30.275657 33.3481685 30.743857 33.0552168 30.8889287 32.9644458 31.0082795 32.8379651 31.09049 32.6878764 35.2239365 25.1415895 40.6462732 22.1807285 47.3575001 23.8052936 54.5198529 25.5390611 59.4661454 32.1750488 62.1963776 43.7132567L1.13686838e-13 43.7132567z"/>
+  </g>
+</svg>
+</div>
+  </div>
+
+  <div class="lk-text">
+    <div class="lk-title">观念年轮</div>
+    <div class="lk-sub" id="lk-sub">正在翻时间轴…</div>
+  </div>
+</div>
+
+<script>
+(function () {
+  var NS = 'http://www.w3.org/2000/svg';
+  var svg = document.querySelector('.lk-fox-svg');
+
+  // 1. Drawing order + per-path stroke length so each stroke draws itself.
+  var paths = [].slice.call(svg.querySelectorAll('path'));
+  paths.forEach(function (p, i) {
+    var len = 1000;
+    try { len = Math.ceil(p.getTotalLength()) || 1000; } catch (e) {}
+    p.style.setProperty('--lk-len', len);
+    p.style.setProperty('--lk-delay', (i * 0.04).toFixed(3) + 's');
+  });
+
+  // 2. Group parts that must move together. Wrapping is only safe when the
+  //    members already share a parent, otherwise transforms would shift them.
+  function group(selectors, cls) {
+    var els = [];
+    selectors.forEach(function (s) {
+      var n = svg.querySelector(s);
+      if (n) els.push(n);
+    });
+    if (els.length < 2) return null;
+    var parent = els[0].parentNode;
+    if (!els.every(function (e) { return e.parentNode === parent; })) return null;
+    var g = document.createElementNS(NS, 'g');
+    g.setAttribute('class', cls);
+    parent.insertBefore(g, els[0]);
+    els.forEach(function (e) { g.appendChild(e); });
+    return g;
+  }
+
+  // sun disc (ellipse #1) + its rays (path #5) turn together
+  group(['[data-p="5"]', '[data-e="1"]'], 'lk-sun');
+  // tumbleweed: outer spiral (6) + inner spiral (7)
+  group(['[data-p="6"]', '[data-p="7"]'], 'lk-tumble');
+  // the two clouds live in a single path (13)
+  var cloud = svg.querySelector('[data-p="13"]');
+  if (cloud) cloud.classList.add('lk-cloud');
+
+  // 3. Progress arc + the year scrubber: loading progress IS time advancing.
+  var arc = document.getElementById('lk-arc');
+  var R = 184, C = 2 * Math.PI * R;
+  arc.style.strokeDasharray = C;
+  arc.style.strokeDashoffset = C;
+
+  var yearEl = document.getElementById('lk-year');
+  var YEAR_FROM = 2010, YEAR_TO = 2026;
+  var YEAR_RUN_MS = 4200;          // fast off the line, long slow settle on 2026
+  var stage = document.getElementById('lk-stage');
+  var wrap = document.getElementById('lk-wrap');
+  var sub = document.getElementById('lk-sub');
+  var timer = null;
+  var yearRaf = null, yearT0 = 0, yearRunning = false, yearExternal = false, lastYear = -1;
+
+  // 先快后慢. easeOutCubic covers most of the distance in the first third and
+  // then crawls, so the number visibly decelerates and locks onto 2026.
+  function easeOutCubic(t) { return 1 - Math.pow(1 - t, 3); }
+
+  function paintYear(v) {
+    var t = Math.max(0, Math.min(1, v));
+    var y = Math.round(YEAR_FROM + (YEAR_TO - YEAR_FROM) * easeOutCubic(t));
+    if (y !== lastYear) { lastYear = y; yearEl.textContent = String(y); }
+  }
+
+  function yearLoop(ts) {
+    if (!yearRunning || yearExternal) return;
+    if (!yearT0) yearT0 = ts;
+    var t = Math.min(1, (ts - yearT0) / YEAR_RUN_MS);
+    paintYear(t);
+    if (t < 1) { yearRaf = requestAnimationFrame(yearLoop); }
+    else { yearRunning = false; }   // 定格在 2026，不回跳
+  }
+
+  var LINES = [
+    '正在翻时间轴…',
+    '正在找第一个说这话的人…',
+    '正在数有几个人说中了…',
+    '正在算还剩多少保质期…'
+  ];
+  var li = 0;
+
+  window.LiukanshanLoader = {
+    start: function () {
+      // the year runs once on its own: fast -> slow -> holds on 2026
+      yearRunning = true; yearT0 = 0;
+      yearRaf = requestAnimationFrame(yearLoop);
+      timer = setInterval(function () {
+        sub.classList.add('lk-fade');
+        setTimeout(function () {
+          li = (li + 1) % LINES.length;
+          sub.textContent = LINES[li];
+          sub.classList.remove('lk-fade');
+        }, 350);
+      }, 2200);
+    },
+
+    progress: function (v) {
+      if (v == null) { stage.classList.remove('lk-hasprogress'); return; }
+      stage.classList.add('lk-hasprogress');
+      var p = Math.max(0, Math.min(1, v));
+      arc.style.strokeDashoffset = C * (1 - p);
+      // real progress takes over and advances the year on the same curve
+      yearExternal = true; yearRunning = false;
+      if (yearRaf) cancelAnimationFrame(yearRaf);
+      paintYear(p);
+    },
+
+    done: function (onGone) {
+      clearInterval(timer);
+      yearExternal = true; yearRunning = false;
+      if (yearRaf) cancelAnimationFrame(yearRaf);
+      sub.textContent = '好了';
+      paintYear(1);                 // 定格 2026
+      stage.classList.add('lk-done');
+      setTimeout(function () {
+        wrap.classList.add('lk-out');
+        setTimeout(function () { if (onGone) onGone(); }, 520);
+      }, 620);
+    }
+  };
+
+  LiukanshanLoader.start();
+
+  if (location.search.indexOf('demo') > -1) {
+    var t0 = Date.now();
+    var iv = setInterval(function () {
+      var p = Math.min(1, (Date.now() - t0) / 4600);
+      LiukanshanLoader.progress(p);
+      if (p >= 1) { clearInterval(iv); LiukanshanLoader.done(); }
+    }, 60);
+  }
+})();
+</script>
+</body>
+</html>

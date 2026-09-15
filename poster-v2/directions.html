@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<title>观念年轮 · 315×175 · 三个方向</title>
+<style>
+/* =========================================================================
+   每个方向都是独立的一套令牌，互不共享颜色。
+   共同点只有：315×175、单文件、零外链、无 emoji 图标、无紫渐变。
+   ========================================================================= */
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#191c22;padding:26px;display:flex;flex-wrap:wrap;gap:26px;align-items:flex-start;
+     font-family:'Helvetica Neue',Arial,sans-serif}
+.stage{display:flex;flex-direction:column;gap:9px}
+.cap{font:11px/1.5 Consolas,monospace;color:#7d8798;max-width:315px}
+.cap b{color:#c9d2e0;display:block;font-weight:600;margin-bottom:2px}
+.poster{width:315px;height:175px;overflow:hidden;position:relative}
+
+/* ==================== A · 功能主义网格社区 Functional Brutalism ====================
+   参考 Are.na / Lobsters / Hacker News。近白底、系统字、发丝灰线、经典链接蓝。
+   还原度 98%：纯结构，零素材。
+   ================================================================================= */
+.a{background:#FBFBFB;color:#111;font-family:-apple-system,'Segoe UI',system-ui,sans-serif;
+   padding:12px 14px;display:flex;flex-direction:column}
+.a .top{display:flex;justify-content:space-between;align-items:baseline;
+        border-bottom:1px solid #E0E0E0;padding-bottom:6px}
+.a .top b{font-size:12px;font-weight:700;letter-spacing:.02em}
+.a .top span{font-size:9px;color:#8a8a8a}
+.a .field{margin-top:9px;display:flex;align-items:center;gap:0;
+          border:1px solid #111;background:#fff;height:24px;padding:0 7px}
+.a .field i{font-style:normal;font-size:11px;color:#111;white-space:nowrap}
+.a .field em{font-style:normal;color:#0000EE;text-decoration:underline;font-size:11px}
+.a .field .caret{width:1px;height:11px;background:#111;margin-left:1px}
+.a .field button{margin-left:auto;border:none;background:none;color:#111;font-size:11px;
+                 font-family:inherit;cursor:default;padding:0}
+.a table{margin-top:8px;border-collapse:collapse;width:100%;font-size:9.5px}
+.a td{padding:3px 0;border-bottom:1px solid #EFEFEF;vertical-align:middle}
+.a td.y{color:#555;font-variant-numeric:tabular-nums;width:34px}
+.a td.s{color:#111}
+.a td.m{width:76px}
+.a .bar{height:5px;background:#E0E0E0;position:relative}
+.a .bar i{position:absolute;left:0;top:0;bottom:0;background:#0000EE}
+.a td.p{text-align:right;color:#555;width:26px;font-variant-numeric:tabular-nums}
+.a .foot{margin-top:auto;font-size:9px;color:#0000EE;text-decoration:underline}
+
+/* ==================== B · 复古未来太空图录 Cosmic Retro-Futurism ====================
+   对标 Perplexity Comet 发布站。纯黑 + 奶油纸白 + 一抹钴蓝，低饱和像老式天文图录。
+   还原度 75%：SVG 轨道线可还原，全屏视差转场降级。
+   ================================================================================ */
+.b{background:#F0EAD8;color:#0A0A0A;font-family:Georgia,'Songti SC',SimSun,serif;
+   padding:14px 16px;display:flex;flex-direction:column}
+.b .rule{height:1px;background:#0A0A0A;opacity:.35}
+.b .head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px}
+.b .head b{font-family:Consolas,monospace;font-size:8.5px;letter-spacing:.22em;color:#2B4F91}
+.b .head span{font-family:Consolas,monospace;font-size:8.5px;letter-spacing:.1em;color:#0A0A0A;opacity:.55}
+.b .mid{position:relative;flex:1}
+/* 轨道线：椭圆弧 = 观念在时间里的抛物线 */
+.b .orbit{position:absolute;inset:-6px -4px auto -4px;height:104px}
+.b .orbit path{fill:none;stroke:#2B4F91;stroke-width:.8}
+.b .orbit path.dash{stroke-dasharray:2 3;opacity:.55}
+.b h1{position:relative;font-size:23px;font-weight:700;line-height:1.22;letter-spacing:.01em;
+      margin-top:10px}
+.b h1 em{font-style:normal;color:#2B4F91}
+.b .yr{position:absolute;right:2px;bottom:-2px;font-family:Consolas,monospace;
+       font-size:9px;letter-spacing:.14em;color:#2B4F91}
+.b .dot{position:absolute;width:3px;height:3px;border-radius:50%;background:#2B4F91}
+.b .foot{display:flex;justify-content:space-between;align-items:flex-end;margin-top:auto}
+.b .foot p{font-family:Consolas,monospace;font-size:8.5px;letter-spacing:.1em;color:#0A0A0A;opacity:.7}
+.b .fbox{width:54px}
+.b .fox-svg{width:100%;height:auto;display:block}
+.b .fox-svg .ff{fill:#F0EAD8}.b .fox-svg .fs{fill:#8a8676}
+.b .fox-svg .sa{stroke:#0A0A0A;opacity:.55}.b .fox-svg .sb{stroke:#0A0A0A;opacity:.8}
+
+/* ==================== C · 水墨晕染（AI 生图路径）毛胚 ====================
+   库中「AI 生图专用风格」，CSS 做不出水墨。这里给的是毛胚：
+   图片槽留好，生图提示词见 cap；文字用宋体墨色压在图上。
+   ====================================================================== */
+.c{background:#F5F2EA;color:#1a1a1a;font-family:'Songti SC',SimSun,Georgia,serif;
+   padding:14px 16px;display:flex;flex-direction:column}
+.c .ink{position:absolute;border-radius:50%;border:1px solid #1a1a1a}
+/* 竖排：两个独立列 + row-reverse，才是传统的由右向左读；靠 writing-mode 自动换行会错字序 */
+.c .vtext{position:absolute;right:16px;top:14px;bottom:14px;
+          display:flex;flex-direction:row-reverse;gap:7px}
+.c .vtext span{writing-mode:vertical-rl;text-orientation:upright;
+               font-size:17px;line-height:1;letter-spacing:.11em;white-space:nowrap}
+.c .k{position:absolute;left:16px;bottom:14px;font-family:Consolas,monospace;
+      font-size:8px;letter-spacing:.18em;color:#1a1a1a;opacity:.62}
+.c .seal{position:absolute;left:16px;top:14px;width:21px;height:21px;
+         border:1px solid #1a1a1a;display:grid;place-items:center;
+         font-size:8.5px;letter-spacing:0;color:#1a1a1a}
+</style></head>
+<body>
+
+<!-- ============================== A ============================== -->
+<div class="stage">
+  <div class="poster a">
+    <div class="top"><b>观念年轮</b><span>315 × 175</span></div>
+    <div class="field">
+      <i>买房是最好的&nbsp;</i><em>投资</em><span class="caret"></span>
+      <button>搜索 ▸</button>
+    </div>
+    <table>
+      <tr><td class="y">2010</td><td class="s">共识</td><td class="m"><div class="bar"><i style="width:92%"></i></div></td><td class="p">92%</td></tr>
+      <tr><td class="y">2016</td><td class="s">出现质疑</td><td class="m"><div class="bar"><i style="width:58%"></i></div></td><td class="p">58%</td></tr>
+      <tr><td class="y">2020</td><td class="s">分裂</td><td class="m"><div class="bar"><i style="width:41%"></i></div></td><td class="p">41%</td></tr>
+      <tr><td class="y">2026</td><td class="s">少数派</td><td class="m"><div class="bar"><i style="width:23%"></i></div></td><td class="p">23%</td></tr>
+    </table>
+    <div class="foot">每一个常识，都曾经是少数派</div>
+  </div>
+  <div class="cap"><b>A · 秒数轮盘 → 功能主义网格</b>近白底 / 系统字 / 发丝灰线 / 链接蓝。像一份原始数据索引。还原度 98%，零素材。</div>
+</div>
+
+<!-- ============================== B ============================== -->
+<div class="stage">
+  <div class="poster b">
+    <div class="head"><b>观念年轮</b><span>ZHIHU HACKATHON 2026</span></div>
+    <div class="mid">
+      <svg class="orbit" viewBox="0 0 283 104" preserveAspectRatio="none">
+        <path d="M-6,96 C56,8 227,8 289,96"/>
+        <path class="dash" d="M-6,78 C66,22 217,22 289,78"/>
+        <path class="dash" d="M-6,58 C78,38 205,38 289,58"/>
+      </svg>
+      <div class="dot" style="left:6px;top:52px"></div>
+      <div class="dot" style="left:140px;top:2px"></div>
+      <div class="dot" style="right:6px;top:52px"></div>
+      <h1>每一个常识，<br>都曾经是<em>少数派</em>。</h1>
+      <div class="yr">2010 — 2026</div>
+    </div>
+    <div class="rule"></div>
+    <div class="foot">
+      <p>你的观点，还剩多少保质期</p>
+      <div class="fbox"><svg class="fox-svg" preserveAspectRatio="xMidYMid meet" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"   viewBox="0 0 252 172">
+  <g fill="none" fill-rule="evenodd" transform="translate(1 1)">
+    <g transform="rotate(-16 289.346 -186.082)">
+      <path class="ff" class="sa" stroke-width="1.679" d="M64.2337032,50.9554391 C69.326726,50.7301153 71.8363314,53.0862987 71.7625195,58.0239891 C71.6887076,62.9616795 69.1791021,65.1038746 64.2337032,64.4505745" transform="rotate(4 67.999 57.753)"/>
+      <path class="ff" class="sa" stroke-linejoin="round" stroke-width="1.679" d="M40.4237478,14.2180416 L39.1494024,5.45817385 C39.0960088,5.09114582 38.7551898,4.83689484 38.3881618,4.8902884 C38.3208218,4.90008471 38.255362,4.92005907 38.1940247,4.94952722 L28.8945485,9.41725331 C27.5111094,10.0818962 25.8903242,10.0293297 24.5528595,9.27644053 C15.5172392,4.19008529 9.83561966,2.11366589 7.50800104,3.04718233 C3.75154889,4.5537478 2.33572314,10.7572204 4.63065998,15.1880371 C6.16061787,18.1419149 10.3622221,21.5445803 17.2354726,25.3960331 C16.3976472,37.4587981 15.5178022,46.1655322 14.5959374,51.5162354 C13.2131403,59.5422901 12.9424578,65.9460163 22.2564454,68.9810928 C31.5704331,72.0161693 51.7850338,74.4828548 58.4975452,68.9810928 C65.2100565,63.4793308 62.6547443,55.3122756 62.332165,51.5162354 C62.1204691,49.0250454 63.5775047,36.5199594 66.7032718,14.0009773 L66.7032616,14.0009759 C66.7542538,13.6336123 66.4977842,13.2944679 66.1304205,13.2434756 C66.0266946,13.2290779 65.921039,13.2391375 65.8218939,13.272851 L52.8226822,17.6931274 L40.4237478,14.2180416 Z" transform="rotate(-5 35.187 37.538)"/>
+      <path class="fs" d="M15.315248,8.44617256 L8.31833154,23.4586328 C3.71393034,20.4664421 1.41172974,16.8935208 1.41172974,12.739869 C1.41172974,6.5093914 5.14666686,5.85407342 7.14956933,5.67077033 C8.48483765,5.54856828 11.2067305,6.47370235 15.315248,8.44617256 Z"/>
+      <ellipse cx="41.211" cy="21.612" class="fs" rx="2.57" ry="2.561"/>
+      <path class="sa" stroke-linecap="round" stroke-width="2" d="M14.9620353,36.9897959 C9.4504735,40.7470215 6.58897875,45.5377157 6.37755102,51.3618786"/>
+      <g class="sa" stroke-linecap="round" stroke-width="2" transform="rotate(-10 228.022 -303.247)">
+        <polyline points="11.979 17.741 12.821 13.375 16.938 13.816" transform="rotate(11 14.459 15.558)"/>
+        <path d="M1.2755102,1.906236 C9.50467955,7.60988599 14.5745654,12.4654138 16.4851678,16.4728195" transform="rotate(8 8.88 9.19)"/>
+      </g>
+      <polyline class="sa" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" points="47.194 72.704 49.723 88.757 53.062 88.757"/>
+      <polyline class="sa" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" points="38.457 72.704 38.457 88.802 34.439 88.802"/>
+      <polyline class="sa" stroke-linecap="round" stroke-width="2" points="3.827 49.001 7.852 47.194 9.881 50.159"/>
+    </g>
+    <g class="sb" transform="translate(183.673 .075)">
+      <ellipse cx="27.182" cy="25.656" stroke-width="1.6" rx="16.23" ry="16.056"/>
+      <path stroke-linecap="round" stroke-width="1.241" d="M43.3673469 10.9754786L46.2032063 8.92857143M40.0898459 38.4901284L42.9686878 41.6553077M11.7576466 39.5408163L7.65306122 42.0095194M11.4210646 9.16590002L8.92857143 6.37755102M27.5774103 0L27.5774103 3.95305288M49.744898 26.2934121L53.9883119 26.2934121M28.1777543 43.0213788L28.1777543 46.6435443M4.7750141 26.2934121L-1.13686838e-13 26.2934121"/>
+    </g>
+    <g class="sa" transform="translate(90.561 37.07)">
+      <path stroke-width="1.3" d="M12.800049,15.5659111 C4.55584222,7.92244512 15.4704843,9.30925816 15.7874228,11.8365084 C16.5864599,18.2079886 -1.59407342,16.7009717 9.76141682,5.31029143 C11.2105717,3.85664573 14.0431581,3.83128988 15.7442578,4.938587 C26.9690273,12.245128 6.70283903,24.0366564 7.0420254,11.1976712 C7.21852245,4.51685113 17.3386508,4.31154035 19.309862,9.72986651 C22.3321026,18.0371882 8.46437643,21.7781905 6.50695995,13.8566412 C3.56093578,1.93425462 20.4151278,5.35464339 19.3961919,11.309848 C15.4161504,34.5713309 -19.1683526,-9.34142036 19.1713745,1.86608396 C35.5190776,6.6448596 15.825887,27.162918 9.45116879,20.2887438 C4.13870945,14.5600559 3.23913308,-3.23699362 15.6237557,4.44710059 C25.0769127,10.3123539 18.548187,21.0571539 11.7389108,16.2047484 L12.800049,15.5659111 Z"/>
+      <path stroke-width="1.4" d="M3.04112737,6.07355704 C-9.07798684,18.5193114 19.0238045,24.6852556 17.7340616,14.4883066 C15.6495877,-1.9919345 -2.9168376,15.9500533 5.89630192,22.0265771 C12.2248714,26.3900281 22.9816978,14.4883066 17.7340616,6.07355704 C15.1973589,2.60036767 11.251439,1.69557836 5.89630192,3.35918911 C5.67778781,3.42707204 4.72606296,4.33186135 3.04112737,6.07355704 Z"/>
+    </g>
+    <path class="ff" class="sb" stroke-width="2.4" d="M195.228571,119.956889 L195.228571,72.0283175 C195.228571,66.0636422 190.393247,61.2283175 184.428571,61.2283175 L181.642857,61.2283175 C175.678182,61.2283175 170.842857,66.0636422 170.842857,72.0283175 L170.842857,103.320154 L146.704082,103.320154 C141.015549,103.320154 136.404082,107.931621 136.404082,113.620154 L136.404082,119.956889 C136.404082,125.645422 141.015549,130.256889 146.704082,130.256889 L184.928571,130.256889 C190.617104,130.256889 195.228571,125.645422 195.228571,119.956889 Z"/>
+    <path class="ff" class="sb" stroke-width="2.4" d="M142.932653,146.742603 L142.932653,111.569134 C142.932653,105.604459 138.097328,100.769134 132.132653,100.769134 L128.071429,100.769134 C122.106753,100.769134 117.271429,105.604459 117.271429,111.569134 L117.271429,130.105869 L91.8571429,130.105869 C86.1686099,130.105869 81.5571429,134.717336 81.5571429,140.405869 L81.5571429,146.742603 C81.5571429,152.431136 86.1686099,157.042603 91.8571429,157.042603 L132.632653,157.042603 C138.321186,157.042603 142.932653,152.431136 142.932653,146.742603 Z" transform="matrix(-1 0 0 1 224.49 0)"/>
+    <path class="sb" stroke-linecap="round" stroke-width="2" d="M85.4591837,169.722195 L210.459184,169.722195"/>
+    <path class="ff" class="sb" stroke-width="2.4" d="M117.271429,169.797705 L162.065306,169.797705 L162.065306,69.5997461 C162.065306,60.0452199 154.319832,52.2997461 144.765306,52.2997461 L134.571429,52.2997461 C125.016902,52.2997461 117.271429,60.0452199 117.271429,69.5997461 L117.271429,169.797705 Z"/>
+    <path class="sb" stroke-linecap="round" stroke-width="2" d="M135.204082 95.7426033L135.204082 119.332513M149.234694 140.38546L149.234694 160.148839M184.94898 74.0589298L184.94898 88.089542M178.571429 93.1915829L178.571429 107.222195M89.2857143 109.773216L89.2857143 123.803828M187.5 97.0181135L187.5 122.528318M98.2142857 122.528318L98.2142857 148.038522M127.55102 125.079338L127.55102 152.495778M147.959184 67.6240743L147.959184 124.434554"/>
+    <path class="ff" class="sb" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M200.255102 48.5487257C202.872492 35.9661772 206.995705 30.031545 212.62474 30.7448292 221.068292 31.8147555 223.776354 37.4777084 226.049192 40.2865168 228.32203 43.0953253 227.519082 31.4863224 236.05935 33.5536377 241.752863 34.9318479 246.298539 39.9302105 249.696378 48.5487257L200.255102 48.5487257zM1.13686838e-13 43.7132567C2.67727204 30.1851529 7.30742539 23.2974109 13.89046 23.0500307 20.0219959 22.8196171 25.1804054 26.0489035 29.3656887 32.7378899L29.3656699 32.7379016C29.6586216 33.2061016 30.275657 33.3481685 30.743857 33.0552168 30.8889287 32.9644458 31.0082795 32.8379651 31.09049 32.6878764 35.2239365 25.1415895 40.6462732 22.1807285 47.3575001 23.8052936 54.5198529 25.5390611 59.4661454 32.1750488 62.1963776 43.7132567L1.13686838e-13 43.7132567z"/>
+  </g>
+</svg>
+</div>
+    </div>
+  </div>
+  <div class="cap"><b>B · 现实参照 → 复古未来太空图录</b>对标 Perplexity Comet 发布站。黑 / 奶油纸 / 钴蓝。轨道线即观念的抛物线。还原度 75%。</div>
+</div>
+
+<!-- ============================== C ============================== -->
+<div class="stage">
+  <div class="poster c">
+    <div class="ink" style="width:154px;height:154px;left:-52px;top:10px;opacity:.4"></div>
+    <div class="ink" style="width:106px;height:106px;left:-28px;top:34px;opacity:.3"></div>
+    <div class="ink" style="width:58px;height:58px;left:-4px;top:58px;opacity:.24"></div>
+    <div class="seal">年轮</div>
+    <div class="vtext"><span>每一个常识，</span><span>都曾经是少数派</span></div>
+    <div class="k">观念年轮 · 你的观点还剩多少保质期</div>
+  </div>
+  <div class="cap"><b>C · 最佳设计师 → 水墨晕染（AI 生图）</b>库中列为「CSS 做不出」。墨圈即年轮，墨迹扩散即观念传播。文字走宋体竖排。<br><b style="margin-top:4px">生图提示词：</b>一滴墨落在宣纸上，正在慢慢洇开，边缘是毛的、不确定的；圈层由内向外越来越淡，像树的年轮，也像一个人改变主意的过程。安静的、旧纸的颜色，没有戏剧光。</div>
+</div>
+
+</body></html>
