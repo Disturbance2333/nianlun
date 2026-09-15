@@ -45,6 +45,9 @@ python server.py 8765          # → http://127.0.0.1:8765
 python warm_ai.py
 ```
 
+**想部署到云上（不依赖本地机器）？见 [`DEPLOY.md`](DEPLOY.md)** —— 仓库里带了 `Dockerfile`，
+知乎 CLI 的 Linux 版会在构建时从官方 CDN 下载并校验 sha256，鉴权走 `ZHIHU_ACCESS_SECRET` 环境变量。
+
 自检：`http://127.0.0.1:8765/api/health` →
 
 ```json
